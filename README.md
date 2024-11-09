@@ -1,7 +1,7 @@
 软件渲染器
 =========
 
-![demo](https://s1.ax1x.com/2020/08/28/d5rtmQ.md.gif)
+![demo](https://github.com/noahwork/render3d-js/blob/main/gif/ilidan_light.gif)
 
 功能
 --------
