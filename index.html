@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>NOAH Renderer</title>
+    <link href='http://fonts.font.im/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./assets/index.css">
+    <script src="./assets/slider.js"></script>
+    <script src='renderer/config.js'></script>
+    <style>
+        canvas {
+            outline: 1px dashed lightskyblue;
+        }
+    </style>
+    <!-- 引入所有用到的文件 -->
+    <script src='renderer/noah_object.js'></script>
+    <script src='renderer/utils.js'></script>
+    <script src='renderer/vector.js'></script>
+    <script src='renderer/color.js'></script>
+    <script src='renderer/canvas.js'></script>
+    <script src='renderer/vertex.js'></script>
+    <script src='renderer/test.js'></script>
+    <script src='renderer/axemesh.js'></script>
+    <script src='renderer/matrix.js'></script>
+    <script src='renderer/axe3d.js'></script>
+    <script src='renderer/axeimage.js'></script>
+    <script src='renderer/pixel.js'></script>
+</head>
+<body>
+<div class="container">
+    <div class="workspace">
+        <h1><i>NOAH RENDERER</i></h1>
+        <div id="id-windows" class="windows-height">
+            <canvas id="id-canvas" width="800" height="600"></canvas>
+            <div class="config windows-height"></div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="">-->
+<!--    <label>-->
+<!--        <input class="noah-auto-slider" type="range"-->
+<!--               value="1" data-value="config.rotationX">-->
+<!--        旋转 X 轴：<span class="noah-label"></span>-->
+<!--    </label>-->
+<!--</div>-->
+<!--<div class="">-->
+<!--    <label>-->
+<!--        <input class="noah-auto-slider" type="range"-->
+<!--               value="1" data-value="config.rotationY">-->
+<!--        旋转 Y 轴：<span class="noah-label"></span>-->
+<!--    </label>-->
+<!--</div>-->
+<!--<div class="">-->
+<!--    <label>-->
+<!--        <input class="noah-auto-slider" type="range"-->
+<!--               value="1" data-value="config.rotationZ">-->
+<!--        旋转 Z 轴：<span class="noah-label"></span>-->
+<!--    </label>-->
+<!--</div>-->
+<!--<div class="">-->
+<!--    <label>-->
+<!--        <input class="noah-auto-slider" type="range"-->
+<!--               value="1" data-value="config.lightX">-->
+<!--        光源 X 轴：<span class="noah-label"></span>-->
+<!--    </label>-->
+<!--</div>-->
+<!--<div class="">-->
+<!--    <label>-->
+<!--        <input class="noah-auto-slider" type="range"-->
+<!--               value="1" data-value="config.lightY">-->
+<!--        光源 Y 轴：<span class="noah-label"></span>-->
+<!--    </label>-->
+<!--</div>-->
+<!--<div class="">-->
+<!--    <label>-->
+<!--        <input class="noah-auto-slider" type="range"-->
+<!--               value="1" data-value="config.lightZ">-->
+<!--        光源 Z 轴：<span class="noah-label"></span>-->
+<!--    </label>-->
+<!--</div>-->
+<script>
+    //
+    // var es = sel => document.querySelectorAll(sel)
+    //
+    // const bindAll = function (sel, eventName, callback) {
+    //     var l = es(sel)
+    //     for (var i = 0; i < l.length; i++) {
+    //         var input = l[i]
+    //         input.addEventListener(eventName, function (event) {
+    //             callback(event)
+    //         })
+    //     }
+    // }
+    //
+    // bindAll('.noah-auto-slider', 'input', function (event) {
+    //     var target = event.target
+    //     var bindVar = target.dataset.value
+    //     var v = target.value
+    //     eval(bindVar + '=' + v)
+    //     log('noah-auto-slider', v)
+    //     //
+    //     var label = target.closest('label').querySelector('.noah-label')
+    //     label.innerText = v
+    // })
+
+    // 函数名应该用 const 修饰, 这样不会被意外修改
+    const __main = function () {
+        let canvas = NoahCanvas.new('#id-canvas')
+        initSliders()
+        let axe3dString = illidanNoah3d
+        let axeImageString = illidanAxeimage
+        // 这是一个测试函数, 给你看原理的, 只是看看
+        // __debug_draw_demo(canvas)
+        // __debug_draw_depth1(canvas)
+        // __debug_draw_depth2(canvas)
+        // __debug_drawScanline(canvas)
+        // __debug_drawTriangle(canvas)
+        // test_drawTriangle1(canvas)
+        // test_drawTriangle2(canvas)
+        setInterval(function () {
+            __debug_drawMesh(canvas, axe3dString, axeImageString)
+        }, 1000 / 60)
+        // __debug_drawMesh(canvas, axe3dString, axeImageString)
+        // __debug_drawAxeImage(canvas, axeImageString)
+        // setInterval(function () {
+        //     __debug_drawMesh(canvas, axe3dString)
+        // }, 1000 / 60)
+
+        // 渲染出来, 不调用这个函数就不会显示结果
+        // canvas.render()
+    }
+
+    __main()
+</script>
+</body>
+</html>
