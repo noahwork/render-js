@@ -1,7 +1,7 @@
 软件渲染器
 =========
 
-![demo](/gif/ilidan_light.gif)
+![demo](gif/ilidan_light.gif)
 
 功能
 --------
